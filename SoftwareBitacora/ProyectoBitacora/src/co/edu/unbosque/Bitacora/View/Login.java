@@ -104,19 +104,10 @@ public class Login extends JFrame {
 			                       e1.setVisible(true);
 			                       
 			                }
-			          
-			                
-
 			            } catch (Exception e1) {
 			                e1.printStackTrace();
 			            }
 			        }
-				
-				
-				
-				
-				
-				
 			}
 		});
 		botonIngresar
