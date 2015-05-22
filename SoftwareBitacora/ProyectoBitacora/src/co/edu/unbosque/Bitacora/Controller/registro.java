@@ -16,11 +16,12 @@ public class registro {
     Conexion conn = new Conexion();
     Connection reg = (Connection) conn.conectar();
     String sql;
-    sql="INSERT INTO estudiante (nombre,codigo)VALUES(?,?)";
+    sql="INSERT INTO usuario (nombre,tipoUsuario, contraseña)VALUES(?,?,?)";
     try{
         PreparedStatement pst=reg.prepareStatement(sql);
         pst.setString(1, nombre);
-        pst.setString(2, codigo);
+        pst.setString(2, "2");
+        pst.setString(3, codigo);
         int n= pst.executeUpdate();
         if(n>0){
             JOptionPane.showMessageDialog(null, "registro");
