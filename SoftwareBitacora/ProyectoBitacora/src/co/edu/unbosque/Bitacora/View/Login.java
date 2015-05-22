@@ -7,18 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-<<<<<<< HEAD
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Toolkit;
-
-=======
 
 import java.awt.Color;
 import java.awt.Font;
@@ -40,7 +28,6 @@ import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 
 import co.edu.unbosque.Bitacora.Controller.*;
->>>>>>> 2eb4753695adbbb1a726da4e421d1d0772b71381
 public class Login extends JFrame {
 
 	private JPanel contentPane;
@@ -94,8 +81,6 @@ public class Login extends JFrame {
 		contentPane.add(campocontraseña);
 
 		JButton botonIngresar = new JButton("Ingresar");
-<<<<<<< HEAD
-=======
 		botonIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String usuario = campousuario.getText();
@@ -125,7 +110,6 @@ public class Login extends JFrame {
 			        }
 			}
 		});
->>>>>>> 2eb4753695adbbb1a726da4e421d1d0772b71381
 		botonIngresar
 				.setToolTipText("Si ya ingresaste los datos correspondientes a tu usuario y tu contrae\u00F1a, ingresa a nuestro software de gestion de Bitacoras.");
 		botonIngresar.setForeground(Color.DARK_GRAY);
@@ -134,8 +118,6 @@ public class Login extends JFrame {
 		contentPane.add(botonIngresar);
 
 		JButton btnRegistrarse = new JButton("Registrarse");
-<<<<<<< HEAD
-=======
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RegistroUsuario registro = new RegistroUsuario();
@@ -144,7 +126,6 @@ public class Login extends JFrame {
 				registro.setVisible(true);
 			}
 		});
->>>>>>> 2eb4753695adbbb1a726da4e421d1d0772b71381
 		btnRegistrarse
 				.setToolTipText("\u00BFA\u00FAn no tienes cuenta? Haz clic en el bot\u00F3n para crear tu cuenta de usuario.");
 		btnRegistrarse.setForeground(Color.DARK_GRAY);
