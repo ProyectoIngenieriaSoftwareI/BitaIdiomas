@@ -17,7 +17,6 @@ import com.mysql.jdbc.Statement;
  * 
  */
 public class ModelLogin extends BitacoraModel {
-
 	/**
      * 
      */
@@ -39,11 +38,9 @@ public class ModelLogin extends BitacoraModel {
         Connection reg = (Connection) conectar.conectar();
         String sql;
         sql = "SELECT * FROM usuario WHERE nombreusuario='" + user + "' AND contraseña ='" + password + "'";
-        try {
-        	
+        try {	
             Statement st = (Statement) reg.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            
+            ResultSet rs = st.executeQuery(sql); 
             while (rs.next()) {
                    cap=rs.getString("tipoUsuario");
                    int tipodeusuario= Integer.parseInt(cap);
@@ -58,8 +55,6 @@ public class ModelLogin extends BitacoraModel {
                 	   registroadmon r1 = new registroadmon();
                 	   r1.setVisible(true);
                    }
-                 
-                   
             }
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -67,5 +62,4 @@ public class ModelLogin extends BitacoraModel {
     }
 		return false;
 	}
-
 }

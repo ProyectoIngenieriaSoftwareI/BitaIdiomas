@@ -19,26 +19,28 @@ public class registro {
 			String nombreUsuario, String tipousuario) {
 		Conexion conn = new Conexion();
 		Connection reg = (Connection) conn.conectar();
-		String sql, sql2;
+		String sql;
 		sql = "INSERT INTO usuario (nombre, apellido, nombreusuario, tipoUsuario, contraseña)VALUES(?,?,?,?,?)";
-		sql2 = "SELECT nombreusuario FROM usuario";
-
-		try {
-			PreparedStatement pst = reg.prepareStatement(sql);
-			pst.setString(1, nombre);
-			pst.setString(2, apellido);
-			pst.setString(3, nombreUsuario);
-			pst.setString(4, tipousuario);
-			pst.setString(5, codigo);
-			int n = pst.executeUpdate();
-
-			if (n > 0) {
-				JOptionPane.showMessageDialog(null, "registro");
+		validarNICK v1= new validarNICK();
+		;
+		
+		if(v1.validadrnick(nombreUsuario).equals(true)){
+			try {
+				PreparedStatement pst = reg.prepareStatement(sql);
+				pst.setString(1, nombre);
+				pst.setString(2, apellido);
+				pst.setString(3, nombreUsuario);
+				pst.setString(4, tipousuario);
+				pst.setString(5, codigo);
+				int n = pst.executeUpdate();
+				if (n > 0) {
+					JOptionPane.showMessageDialog(null, "registro");
+				}
+			} catch (SQLException ex) {
+				Logger.getLogger(RegistroUsuario.class.getName()).log(Level.SEVERE,
+						null, ex);
 			}
-		} catch (SQLException ex) {
-			Logger.getLogger(RegistroUsuario.class.getName()).log(Level.SEVERE,
-					null, ex);
+		}else JOptionPane.showMessageDialog(null, "ya está");
 		}
-
-	}
+		
 }
