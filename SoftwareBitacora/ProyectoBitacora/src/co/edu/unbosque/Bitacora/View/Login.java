@@ -92,16 +92,27 @@ public class Login extends JFrame {
 			            Conexion conectar = new Conexion();
 			            Connection reg = (Connection) conectar.conectar();
 			            String sql;
-			            sql = "SELECT * FROM estudiante WHERE nombre='" + usuario + "' AND codigo ='" + contraseña + "'";
+			            sql = "SELECT * FROM usuario WHERE nombreusuario='" + usuario + "' AND contraseña ='" + contraseña + "'";
 			            try {
+			            	
 			                Statement st = (Statement) reg.createStatement();
 			                ResultSet rs = st.executeQuery(sql);
-
-
+			                
 			                while (rs.next()) {
-			                       cap=rs.getString("nombre");
-			                       EstudianteView e1 = new EstudianteView();
-			                       e1.setVisible(true);
+			                       cap=rs.getString("tipoUsuario");
+			                       int tipodeusuario= Integer.parseInt(cap);
+			                       System.out.println(tipodeusuario);
+			                       if(tipodeusuario==2){
+			                    	   EstudianteView e1 = new EstudianteView();
+				                       e1.setVisible(true);  
+			                       }else if(tipodeusuario==1){
+			                    	   ProfesorView p1 = new ProfesorView();
+			                    	   p1.setVisible(true);
+			                       }else if(tipodeusuario==0){
+			                    	   registroadmon r1 = new registroadmon();
+			                    	   r1.setVisible(true);
+			                       }
+			                     
 			                       
 			                }
 			            } catch (Exception e1) {
