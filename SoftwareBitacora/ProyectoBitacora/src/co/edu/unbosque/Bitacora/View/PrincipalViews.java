@@ -7,7 +7,9 @@ public class PrincipalViews {
 		Login ventanalog = new Login();
 		ventanalog.setVisible(true);
 		EstudianteView ventanaprin = new EstudianteView();
-		ventanaprin.setVisible(false);
+		ventanaprin.setVisible(true);
+		RegistroUsuario ventanaregistro = new RegistroUsuario();
+		ventanaregistro.setVisible(true);
 
 	}
 

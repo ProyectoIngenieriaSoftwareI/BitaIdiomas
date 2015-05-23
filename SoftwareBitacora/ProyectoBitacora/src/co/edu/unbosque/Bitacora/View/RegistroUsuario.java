@@ -13,6 +13,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import java.awt.Label;
+import java.awt.Font;
+import java.awt.TextField;
 
 public class RegistroUsuario extends JFrame {
 
@@ -21,29 +25,10 @@ public class RegistroUsuario extends JFrame {
 	private JPasswordField CampoContraseña;
 	private JPasswordField CampoVerificarContraseña;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroUsuario frame = new RegistroUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public RegistroUsuario() {
 		setTitle("Registro de Estudiante");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 374, 239);
+		setBounds(100, 100, 394, 279);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -55,23 +40,26 @@ public class RegistroUsuario extends JFrame {
 		nombreRegistro.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(50, 14, 46, 14);
+		lblNombre.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNombre.setBounds(45, 14, 51, 14);
 		contentPane.add(lblNombre);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(50, 54, 73, 14);
-		contentPane.add(lblContrasea);
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a:");
+		lblContrasena.setFont(new Font("Arial", Font.BOLD, 12));
+		lblContrasena.setBounds(32, 132, 73, 14);
+		contentPane.add(lblContrasena);
 		
-		JLabel lblRepetirContrasea = new JLabel("Repetir contrase\u00F1a:");
-		lblRepetirContrasea.setBounds(50, 97, 101, 14);
+		JLabel lblRepetirContrasea = new JLabel("Compruebe contrase\u00F1a:");
+		lblRepetirContrasea.setFont(new Font("Arial", Font.BOLD, 12));
+		lblRepetirContrasea.setBounds(10, 168, 137, 14);
 		contentPane.add(lblRepetirContrasea);
 		
 		CampoContraseña = new JPasswordField();
-		CampoContraseña.setBounds(150, 51, 190, 20);
+		CampoContraseña.setBounds(150, 130, 190, 20);
 		contentPane.add(CampoContraseña);
 		
 		CampoVerificarContraseña = new JPasswordField();
-		CampoVerificarContraseña.setBounds(150, 94, 190, 20);
+		CampoVerificarContraseña.setBounds(150, 166, 190, 20);
 		contentPane.add(CampoVerificarContraseña);
 		
 		JButton botonRegistrar = new JButton("Registrar");
@@ -85,7 +73,25 @@ public class RegistroUsuario extends JFrame {
 			}
 			
 		});
-		botonRegistrar.setBounds(251, 145, 89, 23);
+		botonRegistrar.setBounds(138, 206, 89, 23);
 		contentPane.add(botonRegistrar);
+		
+		TextField apellidoRegistro = new TextField();
+		apellidoRegistro.setBounds(150, 47, 190, 22);
+		contentPane.add(apellidoRegistro);
+		
+		Label labelApellido = new Label("Apellido:");
+		labelApellido.setFont(new Font("Arial", Font.BOLD, 12));
+		labelApellido.setBounds(45, 47, 62, 22);
+		contentPane.add(labelApellido);
+		
+		Label label = new Label("Nombre de Usuario:");
+		label.setFont(new Font("Arial", Font.BOLD, 12));
+		label.setBounds(10, 86, 115, 22);
+		contentPane.add(label);
+		
+		TextField CampoNombreUsuario = new TextField();
+		CampoNombreUsuario.setBounds(150, 86, 190, 22);
+		contentPane.add(CampoNombreUsuario);
 	}
 }

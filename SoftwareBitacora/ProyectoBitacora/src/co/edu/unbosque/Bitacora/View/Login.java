@@ -132,22 +132,6 @@ public class Login extends JFrame {
 		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD, 12));
 		btnRegistrarse.setBounds(262, 192, 89, 23);
 		contentPane.add(btnRegistrarse);
-
-		JLabel lblolvidasteTuContrasea = new JLabel(
-				"\u00BFOlvidaste tu contrase\u00F1a?");
-		lblolvidasteTuContrasea.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblolvidasteTuContrasea
-				.setToolTipText("Haz clic si has olvidado tu contrase\u00F1a.");
-		lblolvidasteTuContrasea.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				VentanaRecuperarContraseña ventana2 = new VentanaRecuperarContraseña();
-				ventana2.setVisible(true);
-				dispose();
-			}
-		});
-		lblolvidasteTuContrasea.setBounds(130, 236, 219, 14);
-		contentPane.add(lblolvidasteTuContrasea);
 		
 	}
 }
