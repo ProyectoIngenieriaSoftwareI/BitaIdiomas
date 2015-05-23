@@ -28,5 +28,12 @@ public class ModelEstudiante extends BitacoraModel {
     public void InsertarPalabras(String palabra) {
         // TODO implement here
     }
+    
+    public boolean ValidarInsercionPalabra(String idiomaO,String IdiomaD){
+    	if(idiomaO.equals("Español")){
+    		
+    	}
+		return true;
+    }
 
 }

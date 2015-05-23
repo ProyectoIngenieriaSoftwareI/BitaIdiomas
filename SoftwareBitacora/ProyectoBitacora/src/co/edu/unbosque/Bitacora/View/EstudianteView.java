@@ -48,11 +48,18 @@ public class EstudianteView extends JFrame {
 	private static final String in = "Ingles";
 	private static final String tibet = "Tibetano";
 	private static final String fran = "Frances";
+	public JMenuItem menuespañol;
+	public JMenuItem menuingles;
+	public JMenuItem menutibetano;
+	public JMenuItem menufrances;
+	private static String idiomaorigen = "";
+
+
+
 
 	public EstudianteView() {
 		initComponents();
 	}
-
 	private void VentanasBitacora() {
 		if (ventanaBitacora == null || ventanaBitacora.isClosed()) {
 			ventanaBitacora = new VentanaAñadirBitacora();
@@ -63,6 +70,7 @@ public class EstudianteView extends JFrame {
 			int height = (desktopSize.height - jInternalFrameSize.height) / 2;
 			ventanaBitacora.setLocation(width, height);
 			ventanaBitacora.setVisible(true);
+
 		}
 	}
 
@@ -100,7 +108,7 @@ public class EstudianteView extends JFrame {
 						EstudianteView.class
 								.getResource("/co/edu/unbosque/Bitacora/Resources/Universidad el bosque.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 818, 492);
+		setBounds(100, 100, 818, 500);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -109,17 +117,18 @@ public class EstudianteView extends JFrame {
 		menubitacoras.setFont(new Font("Arial", Font.BOLD, 12));
 		menuBar.add(menubitacoras);
 
-		JMenuItem menuespañol = new JMenuItem("Espa\u00F1ol");
+		menuespañol = new JMenuItem("Espa\u00F1ol");
 		menuespañol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanasBitacora();
 				ventanaBitacora.cambiarIdioma(esp);
+
 			}
 		});
 		menuespañol.setFont(new Font("Arial", Font.BOLD, 12));
 		menubitacoras.add(menuespañol);
 
-		JMenuItem menuingles = new JMenuItem("English");
+		menuingles = new JMenuItem("English");
 		menuingles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanasBitacora();
@@ -129,7 +138,7 @@ public class EstudianteView extends JFrame {
 		menuingles.setFont(new Font("Arial", Font.BOLD, 12));
 		menubitacoras.add(menuingles);
 
-		JMenuItem menutibetano = new JMenuItem(
+		menutibetano = new JMenuItem(
 				"\u0F56\u0F7C\u0F51\u0F0B\u0F5F\u0FB3");
 		menutibetano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -140,7 +149,7 @@ public class EstudianteView extends JFrame {
 		menutibetano.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
 		menubitacoras.add(menutibetano);
 
-		JMenuItem menufrances = new JMenuItem("Fran\u00E7ais");
+		menufrances = new JMenuItem("Fran\u00E7ais");
 		menufrances.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanasBitacora();

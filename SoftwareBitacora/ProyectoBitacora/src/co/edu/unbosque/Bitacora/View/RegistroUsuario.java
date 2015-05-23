@@ -62,24 +62,13 @@ public class RegistroUsuario extends JFrame {
 		CampoVerificarContraseña.setBounds(150, 166, 190, 20);
 		contentPane.add(CampoVerificarContraseña);
 		
-		TextField apellidoRegistro = new TextField();
-		apellidoRegistro.setBounds(150, 47, 190, 22);
-		contentPane.add(apellidoRegistro);
-		
-		TextField CampoNombreUsuario = new TextField();
-		CampoNombreUsuario.setBounds(150, 86, 190, 22);
-		contentPane.add(CampoNombreUsuario);
-		
 		JButton botonRegistrar = new JButton("Registrar");
 		botonRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nombre = nombreRegistro.getText();
 				String pass = CampoContraseña.getText();
-				String apell = apellidoRegistro.getText();
-				String nombreUsuario = CampoNombreUsuario.getText();
-				String tipousuario = "2";
 				registro r1 = new registro();
-				r1.registrarUsuario(nombre, pass, apell, nombreUsuario, tipousuario);
+				r1.registrarUsuario(nombre, pass);
 				
 			}
 			
@@ -87,18 +76,22 @@ public class RegistroUsuario extends JFrame {
 		botonRegistrar.setBounds(138, 206, 89, 23);
 		contentPane.add(botonRegistrar);
 		
+		TextField apellidoRegistro = new TextField();
+		apellidoRegistro.setBounds(150, 47, 190, 22);
+		contentPane.add(apellidoRegistro);
 		
-		
-		Label lblApellido = new Label("Apellido:");
-		lblApellido.setFont(new Font("Arial", Font.BOLD, 12));
-		lblApellido.setBounds(45, 47, 62, 22);
-		contentPane.add(lblApellido);
+		Label labelApellido = new Label("Apellido:");
+		labelApellido.setFont(new Font("Arial", Font.BOLD, 12));
+		labelApellido.setBounds(45, 47, 62, 22);
+		contentPane.add(labelApellido);
 		
 		Label label = new Label("Nombre de Usuario:");
 		label.setFont(new Font("Arial", Font.BOLD, 12));
 		label.setBounds(10, 86, 115, 22);
 		contentPane.add(label);
 		
-		
+		TextField CampoNombreUsuario = new TextField();
+		CampoNombreUsuario.setBounds(150, 86, 190, 22);
+		contentPane.add(CampoNombreUsuario);
 	}
 }

@@ -10,6 +10,8 @@ public class PrincipalViews {
 		ventanaprin.setVisible(true);
 		RegistroUsuario ventanaregistro = new RegistroUsuario();
 		ventanaregistro.setVisible(true);
+		ProfesorView ventanaprofe = new ProfesorView();
+		ventanaprofe.setVisible(true);
 	}
 
 }

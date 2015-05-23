@@ -22,10 +22,15 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import co.edu.unbosque.Bitacora.Model.ModelEstudiante;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaAñadirBitacora extends JInternalFrame {
 	private JTextField CampopalabraTraduccion;
@@ -35,13 +40,16 @@ public class VentanaAñadirBitacora extends JInternalFrame {
 	private JLabel lblTraduccion;
 	private JButton botonañadirpalabras;
 	private JLabel lblañadirpalabra;
-
+	private EstudianteView vistaestudiante;
+    private ModelEstudiante modeloestudiantes;
+    
 	public VentanaAñadirBitacora() {
 		setIconifiable(true);
 		setFont(new Font("Arial Unicode MS", Font.BOLD, 12));
 		setResizable(true);
 		initComponents();
 	}
+	
     private void initComponents(){
     	setFrameIcon(new ImageIcon(VentanaAñadirBitacora.class.getResource("/co/edu/unbosque/Bitacora/Resources/Universidad el bosque.jpg")));
 		setTitle("title");
@@ -64,6 +72,11 @@ public class VentanaAñadirBitacora extends JInternalFrame {
 		campopalabra.setColumns(10);
 		
 		botonañadirpalabras = new JButton("boton a\u00F1adir");
+		botonañadirpalabras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		botonañadirpalabras.setFont(new Font("Arial Unicode MS", Font.BOLD, 12));
 		
 		comboBoxIdioma = new JComboBox();
