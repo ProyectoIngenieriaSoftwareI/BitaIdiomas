@@ -5,30 +5,38 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 public class VentanaConsultaPalabra extends JInternalFrame {
 	private JTable tablaconsultapalabras;
+	private JLabel lblListaPalabras;
 
 	public VentanaConsultaPalabra() {
-		setTitle("Lista de Palabras Agregadas Bitacora\r\n");
+		setFont(new Font("Arial Unicode MS", Font.BOLD, 12));
+		setTitle("lista");
 		setClosable(true);
 		setFrameIcon(new ImageIcon(VentanaConsultaPalabra.class.getResource("/co/edu/unbosque/Bitacora/Resources/Universidad el bosque.jpg")));
 		setResizable(true);
-		setMaximizable(true);
 		setIconifiable(true);
 		setBounds(100, 100, 585, 377);
 		getContentPane().setLayout(null);
 		
-		JLabel labellistarpalabras = new JLabel("Lista de palabras agregadas a la Bitacora ");
-		labellistarpalabras.setFont(new Font("Arial", Font.BOLD, 12));
-		labellistarpalabras.setBounds(10, 11, 247, 15);
-		getContentPane().add(labellistarpalabras);
+		lblListaPalabras = new JLabel("lbl");
+		lblListaPalabras.setFont(new Font("Arial Unicode MS", Font.BOLD, 13));
+		lblListaPalabras.setBounds(10, 11, 559, 15);
+		getContentPane().add(lblListaPalabras);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 37, 569, 310);
@@ -36,7 +44,7 @@ public class VentanaConsultaPalabra extends JInternalFrame {
 		
 		tablaconsultapalabras = new JTable();
 		tablaconsultapalabras.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
-		tablaconsultapalabras.setFont(new Font("Arial", Font.BOLD, 12));
+		tablaconsultapalabras.setFont(new Font("Arial Unicode MS", Font.BOLD, 12));
 		tablaconsultapalabras.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -47,4 +55,42 @@ public class VentanaConsultaPalabra extends JInternalFrame {
 		scrollPane.setViewportView(tablaconsultapalabras);
 
 	}
+	public void cambiarIdiomaConsulta(String nombreIdioma){
+        
+		  try {
+		 
+		  Properties propiedades = new Properties();
+		  
+		  if(nombreIdioma.equals("Español")){
+			  
+			  propiedades
+			     .load(new FileInputStream(
+			       "C:/Users/Sergio/Proyectos Eclipse/ProyectoBitacora/src/PropiedadesIdioma/espanol.properties"));
+			  
+		  }
+		  if (nombreIdioma.equals("Ingles")){
+			  propiedades
+			     .load(new FileInputStream(
+			       "C:/Users/Sergio/Proyectos Eclipse/ProyectoBitacora/src/PropiedadesIdioma/ingles.properties"));
+		  }
+		  if (nombreIdioma.equals("Tibetano")){
+			  propiedades
+			     .load(new FileInputStream(
+			       "C:/Users/Sergio/Proyectos Eclipse/ProyectoBitacora/src/PropiedadesIdioma/tibetano.properties"));
+		  }else if(nombreIdioma.equals("Frances")){
+			  propiedades
+			     .load(new FileInputStream(
+			       "C:/Users/Sergio/Proyectos Eclipse/ProyectoBitacora/src/PropiedadesIdioma/frances.properties"));
+		  }
+		 
+	        this.setTitle(propiedades.getProperty("tituloconsul"));
+	        lblListaPalabras.setText(propiedades.getProperty("labelconsul"));
+	        		    
+		  } catch (FileNotFoundException e) {
+		   System.out.println("Error, El archivo no exite");
+		  } catch (IOException e) {
+		   System.out.println("Error, No se puede leer el archivo");
+		  }
+		 
+}
 }
