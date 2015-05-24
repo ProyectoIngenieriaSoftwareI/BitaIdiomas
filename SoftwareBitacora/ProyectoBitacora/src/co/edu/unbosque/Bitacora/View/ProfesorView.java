@@ -30,12 +30,12 @@ public class ProfesorView extends JFrame {
 	private JDesktopPane PanelActividadesProfe;
 
 	public ProfesorView() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ProfesorView.class.getResource("/co/edu/unbosque/Bitacora/Resources/Universidad el bosque.jpg")));
 		initcomponents();
 		
 	}
 	
 	public void initcomponents(){
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ProfesorView.class.getResource("/co/edu/unbosque/Bitacora/Resources/Universidad el bosque.jpg")));
 		setTitle("Actividad de Profesor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 818, 500);

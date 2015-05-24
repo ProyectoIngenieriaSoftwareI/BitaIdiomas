@@ -12,6 +12,8 @@ public class PrincipalViews {
 		ventanaregistro.setVisible(true);
 		ProfesorView ventanaprofe = new ProfesorView();
 		ventanaprofe.setVisible(true);
+		AdminView ventanaadmin= new AdminView();
+		ventanaadmin.setVisible(true);
 	}
 
 }
