@@ -1,7 +1,10 @@
 package co.edu.unbosque.Bitacora.View;
 
 import java.awt.BorderLayout;
+
 import co.edu.unbosque.Bitacora.Controller.*;
+import co.edu.unbosque.Bitacora.Model.MySQLDatosDAO;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,9 +14,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextArea;
+
 import java.awt.Label;
 import java.awt.Font;
 import java.awt.TextField;
@@ -78,8 +84,8 @@ public class RegistroUsuario extends JFrame {
 				String apell = apellidoRegistro.getText();
 				String nombreUsuario = CampoNombreUsuario.getText();
 				String tipousuario = "2";
-				registro r1 = new registro();
-				r1.registrarUsuario(nombre, pass, apell, nombreUsuario, tipousuario);
+				MySQLDatosDAO r1 = new 	MySQLDatosDAO();
+				r1.InsertarUsuario(nombre, pass, apell, nombreUsuario, tipousuario);
 				
 			}
 			

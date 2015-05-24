@@ -5,30 +5,19 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.Bitacora.Controller.Conexion;
 import co.edu.unbosque.Bitacora.View.AdminView;
 import co.edu.unbosque.Bitacora.View.EstudianteView;
 import co.edu.unbosque.Bitacora.View.ProfesorView;
-import co.edu.unbosque.Bitacora.View.registroadmon;
+
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-/**
- * 
- */
 public class ModelLogin extends BitacoraModel {
-	/**
-     * 
-     */
+
 	public ModelLogin() {
 	}
 
-	/**
-	 * @param user
-	 * @param password
-	 * @return
-	 */
 	public boolean ValidarLogin(String user, String password) {
 		// TODO implement here
 		if ((user.isEmpty()) || (password.isEmpty())) {
@@ -36,8 +25,8 @@ public class ModelLogin extends BitacoraModel {
     } else {
         String cap="";
         String cap1="";
-        Conexion conectar = new Conexion();
-        Connection reg = (Connection) conectar.conectar();
+        MySQLDatosDAO conectar = new MySQLDatosDAO();
+        Connection reg = (Connection) conectar.DBPalabraDAO();
         String sql;
         sql = "SELECT * FROM usuario WHERE nombreusuario='" + user + "' AND contraseña ='" + password + "'";
         try {	

@@ -13,10 +13,18 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
+
+import co.edu.unbosque.Bitacora.Model.MySQLDatosDAO;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaRegistroAdmon extends JInternalFrame {
 	private JButton botonregistroadmon;
-	private JComboBox comboBox;
+	private JPasswordField campocontraseña1admon;
+	private JPasswordField campocontraseña2admon;
+	private JComboBox comboBoxTipoInsertar;
 
 	public VentanaRegistroAdmon() {
 		initcomponents();
@@ -70,27 +78,41 @@ public class VentanaRegistroAdmon extends JInternalFrame {
 		camponickadmon.setBounds(206, 92, 200, 20);
 		getContentPane().add(camponickadmon);
 		
-		JTextField campocontraseña1admon = new JTextField();
-		campocontraseña1admon.setColumns(10);
-		campocontraseña1admon.setBounds(206, 128, 200, 20);
-		getContentPane().add(campocontraseña1admon);
-		
-		JTextField campocontraseña2admon = new JTextField();
-		campocontraseña2admon.setColumns(10);
-		campocontraseña2admon.setBounds(206, 166, 200, 20);
-		getContentPane().add(campocontraseña2admon);
-		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Elija un tipo de usuario....", "Profesor", "Estudiante"}));
-		comboBox.setFont(new Font("Arial", Font.BOLD, 12));
-		comboBox.setBounds(241, 227, 165, 20);
-		getContentPane().add(comboBox);
+		comboBoxTipoInsertar = new JComboBox();
+		comboBoxTipoInsertar.setModel(new DefaultComboBoxModel(new String[] {"Elija un tipo de usuario....", "Profesor", "Estudiante"}));
+		comboBoxTipoInsertar.setFont(new Font("Arial", Font.BOLD, 12));
+		comboBoxTipoInsertar.setBounds(241, 227, 165, 20);
+		getContentPane().add(comboBoxTipoInsertar);
 		
 		botonregistroadmon = new JButton("Registrar Usuario");
+		botonregistroadmon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String nombre = camponombreadmon.getText();
+				String pass = campocontraseña1admon.getText();
+				String apell = campoapellidoadmon.getText();
+				String nombreUsuario = camponickadmon.getText();
+				int selecciondelista = comboBoxTipoInsertar.getSelectedIndex();
+				System.out.println(selecciondelista);
+				String tipousuario="";
+				if(selecciondelista==2){
+					tipousuario="2";
+				}else if(selecciondelista==1){
+					tipousuario="1";
+				}
+				MySQLDatosDAO r1 = new MySQLDatosDAO();
+				r1.InsertarUsuario(nombre, pass, apell, nombreUsuario, tipousuario);
+			}
+		});
 		botonregistroadmon.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		botonregistroadmon.setBounds(83, 300, 135, 23);
 		getContentPane().add(botonregistroadmon);
+		
+		campocontraseña1admon = new JPasswordField();
+		campocontraseña1admon.setBounds(206, 128, 200, 20);
+		getContentPane().add(campocontraseña1admon);
+		
+		campocontraseña2admon = new JPasswordField();
+		campocontraseña2admon.setBounds(206, 166, 200, 20);
+		getContentPane().add(campocontraseña2admon);
 	}
-	
-
 }

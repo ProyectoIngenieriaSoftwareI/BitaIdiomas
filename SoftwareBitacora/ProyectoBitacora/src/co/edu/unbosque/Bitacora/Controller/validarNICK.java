@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.Bitacora.Model.MySQLDatosDAO;
 import co.edu.unbosque.Bitacora.View.EstudianteView;
 import co.edu.unbosque.Bitacora.View.ProfesorView;
-import co.edu.unbosque.Bitacora.View.registroadmon;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -16,8 +16,8 @@ public Boolean validadrnick(String user){
 	
 	boolean valid=true;
 	  String cap="";
-      Conexion conectar = new Conexion();
-      Connection reg = (Connection) conectar.conectar();
+		MySQLDatosDAO conectar = new MySQLDatosDAO();
+      Connection reg = (Connection) conectar.DBPalabraDAO();
       String sql;
       sql = "SELECT nombreusuario FROM usuario";
       try {	
