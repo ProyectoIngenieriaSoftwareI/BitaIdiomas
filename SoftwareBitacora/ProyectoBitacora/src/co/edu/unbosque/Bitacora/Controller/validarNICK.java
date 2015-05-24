@@ -13,7 +13,8 @@ import com.mysql.jdbc.Statement;
 
 public class validarNICK {
 public Boolean validadrnick(String user){
-	boolean valid=false;
+	
+	boolean valid=true;
 	  String cap="";
       Conexion conectar = new Conexion();
       Connection reg = (Connection) conectar.conectar();
@@ -24,10 +25,10 @@ public Boolean validadrnick(String user){
           ResultSet rs = st.executeQuery(sql); 
           while (rs.next()) {
                  cap=rs.getString("nombreusuario");
-                 System.out.println(cap);
-                 if(user==cap){
+                
+                 if(user.equals(cap)){
                 	valid=false;
-                	System.out.println("entro");
+                	System.out.println("entro, el repetido es :"+cap);
                  }
               }
       } catch (Exception e1) {

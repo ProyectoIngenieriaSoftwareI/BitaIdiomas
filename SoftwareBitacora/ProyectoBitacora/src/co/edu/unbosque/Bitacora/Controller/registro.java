@@ -6,31 +6,43 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
+import com.mysql.jdbc.Statement;
+
 import co.edu.unbosque.Bitacora.View.RegistroUsuario;
+
 /**
  *
  * @author Carlos
  */
 public class registro {
-    public void registrarUsuario(String nombre, String codigo){
-    Conexion conn = new Conexion();
-    Connection reg = (Connection) conn.conectar();
-    String sql;
-    sql="INSERT INTO usuario (nombre,tipoUsuario, contraseña)VALUES(?,?,?)";
-    try{
-        PreparedStatement pst=reg.prepareStatement(sql);
-        pst.setString(1, nombre);
-        pst.setString(2, "2");
-        pst.setString(3, codigo);
-        int n= pst.executeUpdate();
-        if(n>0){
-            JOptionPane.showMessageDialog(null, "registro");
-        }
-    }catch(SQLException ex){
-        Logger.getLogger(RegistroUsuario.class.getName()).log(Level.SEVERE,null,ex);
-    }
-    
-    
-    
-    }
+	public void registrarUsuario(String nombre, String codigo, String apellido,
+			String nombreUsuario, String tipousuario) {
+		Conexion conn = new Conexion();
+		Connection reg = (Connection) conn.conectar();
+		String sql;
+		sql = "INSERT INTO usuario (nombre, apellido, nombreusuario, tipoUsuario, contraseña)VALUES(?,?,?,?,?)";
+		validarNICK v1 = new validarNICK();
+		boolean qw = v1.validadrnick(nombreUsuario);
+		System.out.println(qw);
+
+		if (qw == true) {
+			try {
+				PreparedStatement pst = reg.prepareStatement(sql);
+				pst.setString(1, nombre);
+				pst.setString(2, apellido);
+				pst.setString(3, nombreUsuario);
+				pst.setString(4, tipousuario);
+				pst.setString(5, codigo);
+				int n = pst.executeUpdate();
+				if (n > 0) {
+					JOptionPane.showMessageDialog(null, "registro");
+				}
+			} catch (SQLException ex) {
+				Logger.getLogger(RegistroUsuario.class.getName()).log(
+						Level.SEVERE, null, ex);
+			}
+		} else
+			JOptionPane.showMessageDialog(null, "ya está");
+	}
+
 }
