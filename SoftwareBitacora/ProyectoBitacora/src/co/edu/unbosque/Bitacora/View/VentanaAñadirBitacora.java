@@ -23,6 +23,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import co.edu.unbosque.Bitacora.Model.DatosVO;
+import co.edu.unbosque.Bitacora.Model.MySQLDatosDAO;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -80,19 +83,39 @@ public class VentanaAñadirBitacora extends JInternalFrame {
 		botonañadirpalabras = new JButton("boton a\u00F1adir");
 		botonañadirpalabras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DatosVO vo = new DatosVO();
 				String IO = "";
-				
+				String ID = "";
 				if (opc == 1) {
-					IO = "Español";	
+					IO = "Español";
+					//vo.setIdioma_origen("Español");
 				} else if (opc == 2) {
 					IO = "Ingles";
+					//vo.setIdioma_origen("Ingles");
 				} else if (opc == 3) {
 					IO = "Tibetano";
+					//vo.setIdioma_origen("Tibetano");
 				} else if (opc == 4) {
 					IO = "Frances";
+					//vo.setIdioma_origen("Frances");
 				}
-				String ID =(String) comboBoxIdioma.getSelectedItem();
-				System.out.println(IO+"\n"+ID);
+				vo.setIdioma_origen(IO);;
+				int ID1 =comboBoxIdioma.getSelectedIndex();
+				if(ID1==1){
+					ID="Español";
+				}else if(ID1==2){
+					ID="Ingles";
+				}else if(ID1==3){
+					ID="Tibetano";
+				}else if(ID1==4){
+					ID="Frances";
+				}
+				vo.setIdioma_destino(ID);
+				vo.setPalabra(campopalabra.getText());
+				vo.setTraduccion(CampopalabraTraduccion.getText());
+				
+				MySQLDatosDAO m1 = new MySQLDatosDAO();
+				m1.InsertarPalabra(vo);
 				
 				limpiar();
 			}
